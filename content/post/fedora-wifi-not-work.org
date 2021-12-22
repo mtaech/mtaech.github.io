@@ -1,0 +1,47 @@
+---
+title: "Win/Linux 双系统下 Fedora WIFI 失灵解决方案"
+date: 2021-11-22T14:11:45+08:00
+draft: false
+tags: ["linux","fedora","wifi"]
+categories: ["瞎折腾","记录"]
+---
+# +TITLE: Win/Linux 双系统下 Fedora WIFI 失灵的解决方案
+# +AUTHOR：mtaech
+# +DATE：<2021-11-22 一>
+
+** TL;DR 太长不看
+在 Win 系统中关闭控制面板电源计划中的快速启动功能然后重启系统即可
+
+** 正文
+在尝试了诸多社区发行版后，终于决定把 fedora 作为我的常用发行版。但是在使用了一段
+时间后发现 fedeora 下 WIFI 功能经常性的失灵，无法找到周围的 WIFI。偏偏我的幻14笔
+记本没有 RJ45 网口。这一点令我很难受，搜索引擎找了很久也没能找到解决方案。无奈之
+下买了扩展坞连接网线。
+
+上周末格盘全新安装 feodra35 结果发现 WIFI 功能还是无效，于是再次寻找彻底解决之道。
+在更换了几次关键词后终于找到了 archlinux 论坛里的一篇 [[https://bbs.archlinux.org/viewtopic.php?id=266043][帖子]] 楼主的情况和我的网卡
+是同一个型号，而且出现的问题也一样。底下的回帖都将问题指向了 Windows 的快速启动
+功能。在将快速启动功能关闭后，fedora 下的 WIFI 果然好了。第二位的回帖里还附上了
+kernel wiki 里的相关[[https://wireless.wiki.kernel.org/en/users/Drivers/iwlwifi#about_dual-boot_with_windows_and_fast-boot_enabled][链接]]。
+
+#+BEGIN_QUOTE
+About dual-boot with Windows and "fast-boot" enabled
+
+If you have a dual-boot machine with a recent version of Windows and start
+seeing problems during initialization of the WiFi device when booting Linux, the
+problem could be due to the “fast startup” feature on Windows.
+
+With this feature enabled, Windows don't really shut down the entire system, but
+leaves things partially running so you can start the machine faster again. Try
+to disable this option, on Windows 10 it should be in “Control Panel→Hardware
+and Sound→Power Options→System Settings”. Select “Chooose what the power
+buttons do” to access the System Settings from the Power Options. Then disable
+the “Fast Startup” option in “Shutdown Settings”. This will cause Windows to
+fully shutdown and may solve the issue.
+#+END_QUOTE
+
+大意就是 windows 中的快速启动功能在关机时并不会完全的关闭系统。而是会保留部分功
+能的待机以便减少开机所需的时间。WIFI 功能可能就在其中。所以想要解决这个问题最快
+的办法就是去关闭 Windows 的快速启动功能。
+
+
