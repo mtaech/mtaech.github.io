@@ -5,7 +5,7 @@ draft: true
 ---
 
 ** 提要
-开始刷 leetcode 的简单题，碰到一道按频率将数组升序排序的[[https://leetcode-cn.com/problems/sort-array-by-increasing-frequency/][题目]]。
+开始刷 leetCode 的简单题，碰到一道按频率将数组升序排序的[[https://leetcode-cn.com/problems/sort-array-by-increasing-frequency/][题目]]。
 令人难过的是我想了半小时的解题代码，结果很令人失望：执行用时 13ms ，内存消耗39.1。
 而更令我寒心的是解题前几位的代码我连看都看不懂。
 下面是我的代码，又臭又长，很是难看。
