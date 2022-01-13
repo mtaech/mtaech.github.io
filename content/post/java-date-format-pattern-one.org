@@ -47,7 +47,7 @@ draft: true
 | ''       | single quote               | literal      | '                                                |
 | [        | optional section start     |              |                                                  |
 | ]        | optional section end       |              |                                                  |
-| #        | reserved for future use    |              |                                                  |
+| '#       | reserved for future use    |              |                                                  |
 | {        | reserved for future use    |              |                                                  |
 | }        | reserved for future use    |              |                                                  |
 
@@ -56,8 +56,8 @@ draft: true
    和年份有关的格式化字符有 4 个分别是: G,u,y,Y
    
 ** G：纪年标志
-    G 显示是公元前还是公元后。要注意的是：不存在公元前零年，或者公元后
-    零年。年份从一开始，年份值为零时对应的是公元前一年
+    G 纪元标识，显示当前年份属于公元前还是公元后。要注意的是：yyyy 格式下不存在公元前零年，
+    或者公元后零年。年份从一开始，年份值为零时对应的是公元前一年
 #+begin_src java
   DateTimeFormatter formatterCN = DateTimeFormatter.ofPattern("G yyyy", Locale.CHINA);
   DateTimeFormatter formatterEn = DateTimeFormatter.ofPattern("G yyyy", Locale.US);
@@ -78,33 +78,49 @@ year-of-era。二者的差别可详见 [[https://stackoverflow.com/questions/290
 
 #+begin_src java
 DateTimeFormatter formatter =
-                DateTimeFormatter.ofPattern("'proleptic-year:' u Y '-- era-year:' y G");
-formatter.format(LocalDate.of(2,3,1));结果：//proleptic-year: 2 2  -- era-year: 2 公元
-formatter.format(LocalDate.of(1,3,1));结果://proleptic-year: 1 1  -- era-year: 1 公元
-formatter.format(LocalDate.of(0,3,1));结果：//proleptic-year: 0 0  -- era-year: 1 公元前
-formatter.format(LocalDate.of(-1,3,1));结果：//proleptic-year: -1 -1  -- era-year: 2 公元前
+                DateTimeFormatter.ofPattern("'proleptic-year:' u Y G '-- era-year:' y G");
+formatter.format(LocalDate.of(2,3,1));//结果：proleptic-year: 2 2 公元 -- era-year: 2 公元
+formatter.format(LocalDate.of(1,3,1));//结果:proleptic-year: 1 1 公元 -- era-year: 1 公元
+formatter.format(LocalDate.of(0,3,1));//结果：proleptic-year: 0 0 公元前 -- era-year: 1 公元前
+formatter.format(LocalDate.of(-1,3,1));//结果：proleptic-year: -1 -1 公元前 -- era-year: 2 公元前
 #+end_src
 
 *** year-of-ear：y 和 week-based-year：Y 的差别
 y 和 Y 的差别在于第一周存在跨年时 YYYY 会根据 [[https://docs.oracle.com/javase/8/docs/api/java/time/temporal/WeekFields.html][WeekFields]] 中 firstDayOfWeek(每周
 第一天) 和 minimalDays(当年第一周天数最小数) 属性值来计算跨年周属于哪一年。从每
 周第一天开始计算如果在新年的天数大于等于第一周天数最小数那么跨年周属于新年的第一
-周，否则属于旧年的最后一周。DateTimeFormatter 中 WeekFields 上述两个字段的默认
-值由 [[https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html][Locale]] 决定。WeekFields 默认有两种规则 ISO（起始天为周一，第一周最少 4 天）
-和 SUNDAY_START（起始天为周四，第一周最少 1 天） 。
+周，否则属于旧年的最后一周。同时改周内所有的天数年分都会被设定为周所在年份，这也
+就是为什么不推荐使用 YYYY 格式化年份的原因。
+
+DateTimeFormatter 中 WeekFields 上述两个字段的默认值由 [[https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html][Locale]] 决定。WeekFields
+默认有两种规则 ISO（起始天为周一，第一周最少 4 天）和 SUNDAY_START（起始天为周四，
+第一周最少 1 天） 。
+
+要注意的是 Locale.CHINA 默认使用的是 SUNDAY_START。
    
 #+begin_src java 
   LocalDate date = LocalDate.of(2022, 1, 1);
   DateTimeFormatter formatterUK =
-      DateTimeFormatter.ofPattern("YYYY-MM-dd ww", Locale.UK);
+      DateTimeFormatter.ofPattern("YYYY-MM-dd '第'ww'周'", Locale.UK);
   DateTimeFormatter formatterCN =
-      DateTimeFormatter.ofPattern("YYYY-MM-dd ww",Locale.CHINA);
-  System.out.printf("中国时间:%s \n",formatterCN.format(date));//结果：中国时间：2022-01-01 01
-  System.out.printf("英国时间:%s\n",formatterUK.format(date));//结果：英国时间：2021-01-01 52
+      DateTimeFormatter.ofPattern("YYYY-MM-dd '第'ww'周'",Locale.CHINA);
+  System.out.printf("中国时间:%s\n",formatterCN.format(date));//结果：中国时间：2022-01-01 01
+  System.out.printf("英国时间:%s\n",formatterUK.format(date));//结果：英国时间：2021-01-01 52 因为跨年周在2021年有5天所以被判定为 2021 年
 #+end_src
 
+* 季度格式
+季度相关的格式化字符只有 Q/q 两个，规则都是从一月开始每三个月算一个季度。
+唯一不同的在于格式化结果不一样，q 格式除了 qq 显示 01 外，其他数量的 q 都显示为 1 。
+而 Q 格式则是不同数量的 Q 在不同地区下有着不同的格式化结果。
+| 格式 | 英语地区    | 中文地区  |
+| Q    | 1           | 1         |
+| QQ   | 01          | 01        |
+| QQQ  | Q1          | 1 季      |
+| QQQQ | 1st quarter | 第 1 季度 |
 
 
+
+ 
 
     
     
