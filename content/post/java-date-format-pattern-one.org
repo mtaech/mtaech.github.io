@@ -2,7 +2,8 @@
 title: "Java DateTimeFormatter 初识（一）  "
 date: 2022-01-05T14:17:08+08:00
 draft: false
-tags:["JAVA","DateTimeFormatter"]
+tags:["DateTimeFormatter"]
+categories:["学习笔记","JAVA"]
 ---
 # +TITLE:Java DateTimeFromatter 初识（一）
 # +AUTHOR:mtaech
@@ -61,14 +62,12 @@ tags:["JAVA","DateTimeFormatter"]
    
 ** G：纪年标志
     G 纪元标识，显示当前年份属于公元前还是公元后。要注意的是：yyyy 格式下不存在公元前零年，
-    或者公元后零年。年份从一开始，年份值为零时对应的是公元前一年
+    或者公元后零年。年份从一开始，年份值为零时对应的是公元前一年。
 #+begin_src java
-  DateTimeFormatter formatterCN = DateTimeFormatter.ofPattern("G yyyy", Locale.CHINA);
-  DateTimeFormatter formatterEn = DateTimeFormatter.ofPattern("G yyyy", Locale.US);
-  formatterCN.format(LocalDate.now());//结果：公元 2022
-  formatterCN.format(LocalDate.of(0,1,1));//结果：公元前 0001
-  formatterEn.format(LocalDate.now());//结果：AD 2022
-  formatterEn.format(LocalDate.of(0,1,1));//结果：BC 0001
+  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("G yyyy");
+  formatter.format(LocalDate.of(1,1,1));//结果：公元 0001
+  formatter.format(LocalDate.of(0,1,1));//结果：公元前 0001
+  formatter.format(LocalDate.of(-1,1,1));//结果：公元前 0002
 #+end_src
 
 ** u，y，Y：年份标志
