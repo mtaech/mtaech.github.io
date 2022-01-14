@@ -2,8 +2,8 @@
 title: "Java DateTimeFormatter 初识（一）  "
 date: 2022-01-05T14:17:08+08:00
 draft: false
-tags:["DateTimeFormatter"]
-categories:["学习笔记","JAVA"]
+tags: ["DateTimeFormatter"]
+categories: ["学习笔记","JAVA"]
 ---
 # +TITLE:Java DateTimeFromatter 初识（一）
 # +AUTHOR:mtaech
