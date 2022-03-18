@@ -1,0 +1,30 @@
+---
+title: "Emacs Build Tour"
+date: 2022-03-19T05:00:13+08:00
+draft: true
+---
+
+#+title: emacs编译指引
+#+data: <2022-03-19 Sat>
+#+author: mtaech
+
+
+自己 fedora35 编译附带 native-comp 模块 emacs29 的过程，留个记录
+
+** prerequisite
+
+#+begin_src shell
+sudo dnf in git gcc-c++ autoconf textinfo libXpm-devel libtiff-devel giflib-devel libpng-devel \
+libjpeg-devel librsvg2-devel libXaw-devel gnutls-devel ncurses-devel libgccjit
+#+end_src
+
+** build
+#+begin_src shell
+  git clone --depth 1 https://github.com/emacs-mirror/emacs.git
+  cd emacs
+  ./autogen.sh
+  ./configure
+  ./configure --with-native-compilation --with-modules
+  make -j 16
+  sudo make -j 16 install
+#+end_src
