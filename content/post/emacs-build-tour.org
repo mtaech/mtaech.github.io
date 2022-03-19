@@ -2,7 +2,7 @@
 title: "Emacs Build Tour"
 date: 2022-03-19T05:00:13+08:00
 draft: false
-tags:Linux Fedora Emacs
+tags: Linux Fedora Emacs
 ---
 
 #+title: emacs编译指引
@@ -15,8 +15,8 @@ tags:Linux Fedora Emacs
 ** prerequisite
 
 #+begin_src shell
-sudo dnf in git gcc-c++ autoconf textinfo libXpm-devel libtiff-devel giflib-devel libpng-devel \
-libjpeg-devel librsvg2-devel libXaw-devel gnutls-devel ncurses-devel libgccjit
+sudo dnf in git gcc-c++ autoconf texinfo libXpm-devel libtiff-devel giflib-devel libpng-devel \
+libjpeg-devel librsvg2-devel libXaw-devel gnutls-devel ncurses-devel libgccjit-devel
 #+end_src
 
 ** build
