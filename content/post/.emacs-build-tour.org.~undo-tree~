@@ -1,0 +1,5 @@
+(undo-tree-save-format-version . 1)
+"ed77a9a70098511211b74a603aa815d1089c5c89"
+[nil nil nil nil (25141 27260 676133 157000) 0 nil]
+([nil current ((427 . 433) (#("t" 0 1 (line-prefix #(" " 0 1 (display (left-fringe org-modern--block-inner org-block-begin-line))) wrap-prefix #(" " 0 1 (display (left-fringe org-modern--block-inner org-block-begin-line))) src-block t face (org-block) font-lock-multiline t font-lock-fontified t fontified t)) . -289) (undo-tree-id0 . -1) 290 (t 25141 27215 57854 251000)) nil (25141 27260 676129 721000) 0 nil])
+nil
