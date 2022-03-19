@@ -1,5 +1,7 @@
 (undo-tree-save-format-version . 1)
-"ed77a9a70098511211b74a603aa815d1089c5c89"
+"76df52757c892962bb0dfd0adcc27b3a215bbb49"
 [nil nil nil nil (25141 27260 676133 157000) 0 nil]
-([nil current ((427 . 433) (#("t" 0 1 (line-prefix #(" " 0 1 (display (left-fringe org-modern--block-inner org-block-begin-line))) wrap-prefix #(" " 0 1 (display (left-fringe org-modern--block-inner org-block-begin-line))) src-block t face (org-block) font-lock-multiline t font-lock-fontified t fontified t)) . -289) (undo-tree-id0 . -1) 290 (t 25141 27215 57854 251000)) nil (25141 27260 676129 721000) 0 nil])
+([nil nil ((427 . 433) (#("t" 0 1 (line-prefix #(" " 0 1 (display (left-fringe org-modern--block-inner org-block-begin-line))) wrap-prefix #(" " 0 1 (display (left-fringe org-modern--block-inner org-block-begin-line))) src-block t face (org-block) font-lock-multiline t font-lock-fontified t fontified t)) . -289) (undo-tree-id0 . -1) 290 (t 25141 27215 57854 251000)) nil (25141 27260 676129 721000) 0 nil])
+([nil nil ((81 . 82) (t 25141 27260 741082 660000)) nil (25141 27345 692909 24000) 0 nil])
+([nil current ((#(" " 0 1 (fontified t)) . -100) (undo-tree-id1 . -1) (undo-tree-id2 . -1) 101 (98 . 100) (90 . 91) (#(" " 0 1 (fontified t)) . -90) (undo-tree-id3 . -1) 91 (91 . 92) (89 . 90) (83 . 84) (96 . 97) (101 . 102) (101 . 102) (#("}" 0 1 (fontified t)) . -101) (undo-tree-id4 . -1) (undo-tree-id5 . 1) (undo-tree-id6 . -1) 102 (101 . 102) (82 . 83) (#("[" 0 1 (fontified t)) . -83) (undo-tree-id7 . -1) 84 (83 . 84) (t 25141 27345 700736 657000)) nil (25141 27515 487531 389000) 0 nil])
 nil
