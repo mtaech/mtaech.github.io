@@ -16,7 +16,7 @@ tags: ["Linux","Fedora","Emacs"]
 
 #+begin_src shell
 sudo dnf in git gcc-c++ autoconf texinfo libXpm-devel libtiff-devel giflib-devel libpng-devel \
-libjpeg-devel librsvg2-devel libXaw-devel gnutls-devel ncurses-devel libgccjit-devel
+libjpeg-devel librsvg2-devel libXaw-devel gnutls-devel ncurses-devel libgccjit-devel gtk3-devel
 #+end_src
 
 ** build
@@ -24,8 +24,7 @@ libjpeg-devel librsvg2-devel libXaw-devel gnutls-devel ncurses-devel libgccjit-d
   git clone --depth 1 https://github.com/emacs-mirror/emacs.git
   cd emacs
   ./autogen.sh
-  ./configure
-  ./configure --with-native-compilation --with-modules
+  ./configure --with-native-compilation --with-modules --with-pgtk
   make -j 16
   sudo make -j 16 install
 #+end_src
