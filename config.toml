@@ -1,4 +1,4 @@
-baseURL = "blog.jethorse.com"
+baseURL = "/"
 defaultContentLanguage = "zh-cn"
 defaultContentLanguageInSubdir = false
 title = "JetHorse"
@@ -34,7 +34,7 @@ dateFormatToUse = "2006/01/02"
 # Whether display TOC or not.
 toc = true
 googleVerification = ""
-icp = "ganz"
+icp = "赣ICP备2022006919号"
 
 [params.git]
 name = "Notebook"
