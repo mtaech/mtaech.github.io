@@ -1,0 +1,3 @@
+[submodule "themes/notebook"]
+	path = themes/notebook
+	url = https://github.com/mtaech/notebook.git
